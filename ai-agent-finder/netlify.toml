@@ -2,10 +2,7 @@
 # Place this file in the root of your project
 
 [build]
-  # Directory with the Vite source files
-  publish = "dist"
-  
-  # Build command to run
+  # Build command to run (Vite outputs to 'dist' by default)
   command = "npm run build"
 
 [build.environment]
