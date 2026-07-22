@@ -1,0 +1,33 @@
+# Netlify configuration for AI Agent Finder
+# Located at the root of the monorepo to guide Netlify to the specific app folder
+
+[build]
+  # The directory where package.json is located (relative to repo root)
+  base = "ai-agent-finder"
+  
+  # Command to build the project
+  command = "npm run build"
+  
+  # Directory to publish (relative to the base directory)
+  publish = "dist"
+
+# Redirects for Single Page Application (SPA) routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
